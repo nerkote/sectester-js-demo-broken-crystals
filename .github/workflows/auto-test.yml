@@ -1,20 +1,13 @@
 name: CI / Automated testing
 
 on:
-  workflow_dispatch:
-
-  repository_dispatch:
-    types: [sectester]
-
-  schedule:
-    - cron: '30 3 * * sun'
-
   pull_request:
     branches:
       - '**'
 
 jobs:
   test:
+    name: Testing
     runs-on: ubuntu-latest
     steps:
       - name: Checkout
@@ -23,7 +16,7 @@ jobs:
       - name: Set Node.js
         uses: actions/setup-node@v3
         with:
-          node-version: 16
+          node-version: 'lts/*'
           cache: npm
 
       - name: Install deps in quiet mode
@@ -34,4 +27,4 @@ jobs:
         env:
           BRIGHT_TOKEN: ${{ secrets.BRIGHT_TOKEN }}
           BRIGHT_HOSTNAME: app.neuralegion.com
-          BROKEN_CRYSTALS_URL: https://brokencrystals.com
+          BROKEN_CRYSTALS_URL: http://localhost:3000
