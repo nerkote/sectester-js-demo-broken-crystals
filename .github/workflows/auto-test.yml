@@ -34,4 +34,4 @@ jobs:
         env:
           BRIGHT_TOKEN: ${{ secrets.BRIGHT_TOKEN }}
           BRIGHT_HOSTNAME: app.neuralegion.com
-          BROKEN_CRYSTALS_URL: http://localhost:3000
+          BROKEN_CRYSTALS_URL: https://brokencrystals.com
